@@ -128,38 +128,80 @@
   .article-list{
     display:flex;
     flex-direction:column;
+    counter-reset:article-counter;
   }
   .article-card{
-    padding:38px 0;
+    position:relative;
+    padding:34px 0 34px 0;
+    padding-right:64px;
     border-bottom:1px solid var(--rule);
+    counter-increment:article-counter;
+    transition:padding-right .2s;
   }
   .article-card:first-child{padding-top:0;}
+  .article-card::before{
+    content:counter(article-counter, arabic-indic);
+    position:absolute;
+    right:0;
+    top:34px;
+    width:42px;
+    height:42px;
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Aref Ruqaa', serif;
+    font-size:1.2rem;
+    color:var(--maroon);
+  }
+  .article-card:first-child::before{top:0;}
+  .article-meta{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:10px;
+    flex-wrap:wrap;
+  }
   .article-date{
     color:var(--teal);
     font-weight:700;
     font-size:.98rem;
-    margin-bottom:10px;
-    display:block;
+    display:inline-block;
+  }
+  .article-meta .dot{
+    color:var(--rule);
+  }
+  .reading-time{
+    color:var(--ink-soft);
+    font-size:.92rem;
   }
   .article-title{
     font-family:'Aref Ruqaa', serif;
     font-size:1.7rem;
     color:var(--brown-dark);
-    margin:0 0 16px;
+    margin:0 0 14px;
     line-height:1.6;
   }
   .article-title a{transition:color .2s;}
   .article-title a:hover{color:var(--maroon);}
-  .article-excerpt{
+  .article-teaser{
     color:var(--ink-soft);
-    font-size:1.05rem;
+    font-size:1.02rem;
+    font-style:italic;
     margin:0 0 16px;
+    line-height:1.75;
   }
   .read-more{
     color:var(--maroon);
     font-weight:700;
     border-bottom:1px solid var(--maroon);
     padding-bottom:2px;
+  }
+
+  @media (max-width:640px){
+    .article-card{padding-right:52px;}
+    .article-card::before{width:34px;height:34px;font-size:1rem;top:2px;}
   }
 
   .full-article{
@@ -279,44 +321,68 @@
   <div id="articles" class="article-list">
 
     <article class="article-card">
-      <span class="article-date">24 أغسطس 2026</span>
+      <div class="article-meta">
+        <span class="article-date">24 أغسطس 2026</span>
+        <span class="dot">·</span>
+        <span class="reading-time">11 دقائق قراءة</span>
+      </div>
       <h3 class="article-title"><a href="#a1">اليمني يريد أن يعيش: شهادة إنسان من زمن الحرب والقلق والأمل</a></h3>
-      <p class="article-excerpt">هل آن الأوان أن يتوقف العالم عن الحروب والصراعات والتوترات؟ هل آن الأوان أن يتوقف القادة والأحزاب والقنوات الإعلامية وتجار الحروب عن صناعة الخوف والكراهية، وأن يبدأوا بصناعة الابتسامة والطمأنينة والسلام؟</p>
+      <p class="article-teaser">عن الحرب التي لا تنتهي بسكوت الرصاص، وعن حلم إنسان بسيط: أن يستيقظ صباحًا مطمئنًا.</p>
       <a class="read-more" href="#a1">اقرأ النص كاملاً ←</a>
     </article>
 
     <article class="article-card">
-      <span class="article-date">25 أغسطس 2026</span>
+      <div class="article-meta">
+        <span class="article-date">25 أغسطس 2026</span>
+        <span class="dot">·</span>
+        <span class="reading-time">4 دقائق قراءة</span>
+      </div>
       <h3 class="article-title"><a href="#a2">نحو وعي حقيقي لبناء وطن حقيقي</a></h3>
-      <p class="article-excerpt">بناء البلد لا يبدأ من السياسة وحدها، ولا من الشعارات، ولا من محاولة إقناع الناس بأن حزبًا واحدًا أو رأيًا واحدًا هو الصحيح. بناء البلد يبدأ من الإنسان.</p>
+      <p class="article-teaser">لماذا يبدأ إصلاح البلد من وعي الإنسان بحقوقه وواجباته، لا من شعارات السياسة.</p>
       <a class="read-more" href="#a2">اقرأ النص كاملاً ←</a>
     </article>
 
     <article class="article-card">
-      <span class="article-date">25 أغسطس 2026</span>
+      <div class="article-meta">
+        <span class="article-date">25 أغسطس 2026</span>
+        <span class="dot">·</span>
+        <span class="reading-time">7 دقائق قراءة</span>
+      </div>
       <h3 class="article-title"><a href="#a3">من الإنسان إلى الدولة: رؤية لإعادة بناء اليمن</a></h3>
-      <p class="article-excerpt">إذا أردنا بناء يمن حقيقي ومستقر، فلا يكفي أن نغيّر حكومة أو نبدّل مسؤولين. ما نحتاجه هو مشروع وطني شامل لإعادة بناء الدولة والإنسان والمجتمع.</p>
+      <p class="article-teaser">خارطة طريق شاملة: من هوية وطنية موحدة، إلى تعليم وجيش وقضاء يخدمون المواطن لا العكس.</p>
       <a class="read-more" href="#a3">اقرأ النص كاملاً ←</a>
     </article>
 
     <article class="article-card">
-      <span class="article-date">25 أغسطس 2026</span>
+      <div class="article-meta">
+        <span class="article-date">25 أغسطس 2026</span>
+        <span class="dot">·</span>
+        <span class="reading-time">6 دقائق قراءة</span>
+      </div>
       <h3 class="article-title"><a href="#a4">اليمن: مشروع دولة يمتد لمئتي عام</a></h3>
-      <p class="article-excerpt">اليمن ليس بلدًا بلا إمكانات، وليس بلدًا محكومًا عليه بالفقر أو الفوضى إلى الأبد. اليمن يمتلك موارد وثروات وموقعًا جغرافيًا مهمًا.</p>
+      <p class="article-teaser">رؤية لا تُقاس بعمر حكومة أو مدة ولاية، بل بعمر أجيال تتوارث بناء الوطن.</p>
       <a class="read-more" href="#a4">اقرأ النص كاملاً ←</a>
     </article>
 
     <article class="article-card">
-      <span class="article-date">25 أغسطس 2026</span>
+      <div class="article-meta">
+        <span class="article-date">25 أغسطس 2026</span>
+        <span class="dot">·</span>
+        <span class="reading-time">6 دقائق قراءة</span>
+      </div>
       <h3 class="article-title"><a href="#a5">شباب وبنات اليمن: اعرفوا هويتكم واصنعوا صورتكم</a></h3>
-      <p class="article-excerpt">يا شباب وبنات اليمن، اعرفوا هويتكم وافتخروا بها، ولكن بالطريقة الصحيحة. الاعتزاز بالهوية لا يعني أن نعيش على أمجاد الماضي.</p>
+      <p class="article-teaser">كيف يمكن لجيل كامل أن يعيد صياغة صورة اليمن في العالم، بكاميرا هاتفه فقط؟</p>
       <a class="read-more" href="#a5">اقرأ النص كاملاً ←</a>
     </article>
 
     <article class="article-card">
-      <span class="article-date">25 أغسطس 2026</span>
+      <div class="article-meta">
+        <span class="article-date">25 أغسطس 2026</span>
+        <span class="dot">·</span>
+        <span class="reading-time">7 دقائق قراءة</span>
+      </div>
       <h3 class="article-title"><a href="#a6">لا تجعلوا اليمن ساحة لصراع الأحزاب: المواطن أولًا</a></h3>
-      <p class="article-excerpt">هذا الكلام ليس موجهًا ضد حزب، ولا ضد منطقة، ولا ضد جماعة، ولا لصالح طرف سياسي على حساب طرف آخر. هذا الكلام من أجل المواطن اليمني.</p>
+      <p class="article-teaser">دولة لا يحتاج فيها المواطن إلى واسطة، وقانون واحد يُطبَّق على الجميع دون استثناء.</p>
       <a class="read-more" href="#a6">اقرأ النص كاملاً ←</a>
     </article>
 
@@ -353,14 +419,14 @@
     <p>اليمن لا يحتاج إلى من يرسم له طريق الخراب والدمار والاستغلال. اليمن يحتاج إلى من يكتشف طاقته ويعطيها الطريق الصحيح.</p>
     <p>شباب اليمن ليسوا مشكلة، بل ثروة. طاقاتهم ليست عبئًا، بل مستقبل وطن. اليمني الذي يبحث اليوم عن فرصة خارج بلده يمكن أن يكون غدًا مهندسًا أو طبيبًا أو مزارعًا أو معلمًا أو صاحب مشروع أو مبتكرًا يبني بلده.</p>
     <p>اليمن يحتاج إلى إدارة رشيدة، وتعليم قوي، ومؤسسات تحترم الإنسان، وقانون يطبق على الجميع، وفرص عمل، واستثمار في الزراعة والبحر والصناعة والتكنولوجيا، وإلى سلام حقيقي يسمح لليمني بأن يعيش ويعمل ويبدع.</p>
-    <p>اليمن ليس قدره الخراب. واليمني ليس قدره الهجرة. والشباب ليس قدرهم الضياع.</p>
+    <p>لا شيء في مصير اليمن محتوم إلى الأبد.</p>
     <p>ربما تأخرنا كثيرًا، وربما خسرنا سنوات وأرواحًا وأحلامًا، لكن ما زال هناك شيء لا يستطيع الحرب أن تدمره بالكامل: قدرة الإنسان اليمني على النهوض.</p>
     <p>نريد أن نعطي هذه الطاقة طريقًا صحيحًا. نريد أن نبني بدل أن نهدم. نريد أن نعلم بدل أن نجهل. نريد أن نداوي بدل أن نجرح. نريد أن نزرع بدل أن ندمر. نريد أن يعود اليمني إلى بلده لأنه يريد أن يبني فيه، لا لأنه لم يجد مكانًا آخر.</p>
 
     <h3>الحرب التي سافرت مع اليمني</h3>
     <p>الحرب لم تبقَ داخل حدود اليمن. لقد امتد أثرها مع الإنسان اليمني إلى الهجرة والاغتراب والعمل والأسرة والذاكرة والمستقبل.</p>
     <p>اليمني خارج وطنه قد يبدو من الخارج أنه نجا، لكنه أحيانًا يعيش معركة أخرى: يبحث عن عمل، ثم يفرح عندما يجده، ويقلق من فقدانه، ويحاول أن يستقر، ويقتطع من دخله ليرسل لأهله، ويفرح بصديق يبتسم له أو يسأله عن حاله، ويعيش في الوقت نفسه شعور الغربة والحنين والقلق على من تركهم خلفه.</p>
-    <p>اليمني داخل اليمن متعب، واليمني خارج اليمن قد يكون متعبًا أيضًا، لكن كل واحد منهما يحمل الألم بطريقة مختلفة.</p>
+    <p>اليمني داخل اليمن منهك، متعب، محتار، مغلوب على أمره، واليمني خارج اليمن قد يكون متعبًا أيضًا، لكن كل واحد منهما يحمل الألم بطريقة مختلفة. ونساء اليمن، المظلومات المقهورات المتعبات، يحملن من هذا الألم نصيبًا لا يقل عن نصيب الرجال، وربما أثقل.</p>
     <p>هناك من يفكر: كيف سأصل إلى نهاية الشهر؟ ومن يفكر: كيف سأرسل المال لأهلي؟ ومن يفكر: هل سأفقد عملي؟ ومن يفكر: ماذا بقي من عمري؟ ومن يقول في داخله: سافرت وبحثت وعملت، لكن ماذا بنيت لنفسي ولأطفالي؟ ومن يشعر أن سنوات عمره مرت وهو يحاول فقط أن ينجو.</p>
     <p>وهذا الألم لا ينبغي أن يتحول إلى حكم على الإنسان بأنه فاشل.</p>
     <p>كيف يمكن أن تطلب من إنسان أن يبني حياته بينما هو يقضي سنوات طويلة في محاولة تأمين الأساسيات والأمان؟</p>
@@ -813,9 +879,9 @@
   <!-- ============ ABOUT ============ -->
   <section id="about" class="about">
     <h2>عني</h2>
-    <p>اسمي محمد البكاري، من أصل يمني، وأعيش الآن في إسبانيا وأحمل جنسيتها.</p>
-    <p>عشت منذ طفولتي القلق والهجرة والتنقل بين البلدان بسبب الحرب في اليمن، وما زلت حتى اليوم أحمل الكثير من تلك السنوات في داخلي.</p>
-    <p>أكتب هنا لأن الكتابة صارت وسيلتي للتعبير عما عشته، ولأنني أؤمن أن التوعية — خصوصًا توعية الشباب اليمني — هي إحدى الطرق الحقيقية لبناء مستقبل مختلف. لا أكتب باسم حزب أو جهة، بل بصفتي إنسانًا يمنيًا يريد لبلده ولأبنائه حياة أفضل.</p>
+    <p>اسمي محمد البكاري. هذه المدونة مساحة شخصية للتعبير الإنساني عن قضايا تهمني، خصوصًا ما يتعلق باليمن وأهله، ولا تمثل أي حزب أو جهة أو موقف سياسي أو ديني، ولا تعبّر إلا عن رأيي الشخصي.</p>
+    <p>أكتب هنا لأن الكتابة صارت وسيلتي للتعبير عما يشغل بالي تجاه اليمن وأهله، ولأنني أؤمن أن التوعية — خصوصًا توعية الشباب — هي إحدى الطرق الحقيقية لبناء مستقبل مختلف.</p>
+    <p>أكتب من منطلق إنساني بحت، وأرحب دائمًا باختلاف الآراء واحترام وجهات النظر المتعددة.</p>
   </section>
 
 </main>
